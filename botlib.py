@@ -1,3 +1,5 @@
+import random
+
 # To-do: allow for multiple admins (make all the appropriate changes in code)
 ADMIN = "SlimTim10"			# Admin name(s) for certain commands
 
@@ -18,13 +20,53 @@ def parsemsg(privmsg):
 	if msg[0] == '!':
 # Split command message into two parts: bot command and following text
 		cmd = msg.split(' ', 1)
+
 # The '!say' command makes the bot say something
 # To-do: make this command work for private messages sent directly to the bot
 		if cmd[0] == '!say':
 # Send the message to where the '!say' command was sent
 			ret = 'PRIVMSG ' + info[2] + ' :' + cmd[1] + '\n'
+
 # The '!die' command makes the bot quit (admin command)
 		if cmd[0] == '!die' and sender == ADMIN:
 			ret = 'QUIT\n'
+
+# To-do: add a '!calc' command that evaluates basic mathematical expressions
+# Difficulty: easy
+
+# To-do: add a '!insult' command that makes the bot say a randomly selected
+# 	insult to the command sender
+# Difficulty: easy
+
+# To-do: find and fix the bug
+# To-do: add helpful comments to this command's code
+		if cmd[0] == '!rps':
+			try:
+				user_rps = int(cmd[1])
+				if user_rps < 0 or user_rps > 3:
+					raise Exception("Invalid")
+				else:
+					rps_names = ['rock', 'paper', 'scissors']
+					bot_rps = random.randint(0, 3)
+					ret = 'PRIVMSG ' + info[2] + ' :Player chose ' + \
+					rps_names[user_rps] + '. LPMCBot chose ' + \
+					rps_names[bot_rps] + '. '
+					if user_rps == bot_rps:
+						ret += 'Tie game.\n'
+					else:
+						result = user_rps - bot_rps
+						if result == -2 or result == 1:
+							ret += 'Player wins!\n'
+						else:
+							ret += 'Player loses.\n'
+			except:
+				ret = 'PRIVMSG ' + info[2] + \
+				' :Command help: 0 = Rock, 1 = Paper, 3 = Scissors. ' + \
+				'Example: !rps 1\n'
+
+
+# To-do: add a '!ttt' command that starts a game of Tic Tac Toe to be played
+# 	against the bot
+# Difficulty: hard
 
 	return ret
