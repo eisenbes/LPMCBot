@@ -1,8 +1,11 @@
 import random
-    
-# To-do: allow for multiple admins (make all the appropriate changes in code)
-ADMIN = "SlimTim10"             # Admin name(s) for certain commands
-    
+
+# Admin name(s) for certain commands
+# Usage:
+#       if sender in ADMINS:
+#           myfunc()
+ADMINS = ("SlimTim10", "Z_Mass")
+
 def parsemsg(privmsg):
 # Split the received PRIVMSG message into two useful parts
 # Example message:
@@ -28,7 +31,7 @@ def parsemsg(privmsg):
             ret = 'PRIVMSG ' + info[2] + ' :' + cmd[1] + '\n'
 
 # The '!die' command makes the bot quit (admin command)
-        if cmd[0] == '!die' and sender == ADMIN:
+        if cmd[0] == '!die' and sender in ADMINS:
             ret = 'QUIT\n'
 
 # To-do: add a '!calc' command that evaluates basic mathematical expressions
