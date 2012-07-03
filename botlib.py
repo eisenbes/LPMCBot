@@ -57,8 +57,7 @@ def parsemsg(privmsg):
                     if user_rps == bot_rps:
                         ret += 'Tie game.\n'
                     else:
-                        result = user_rps - bot_rps
-                        if result == -2 or result == 1:
+                        if user_rps == (bot_rps + 1) % 3:
                             ret += 'Player wins!\n'
                         else:
                             ret += 'Player loses.\n'
