@@ -8,7 +8,7 @@ PORT = 6667                     # The connection port (commonly 6667 for IRC)
 NICK = 'LPMCBot'                # The nickname of the bot
 USER = 'LPMCbot'                # The username of the bot
 REALNAME = 'LPMCBot'            # The real name of the bot
-CHANNEL = '#test37283'          # The default channel for the bot
+CHANNEL = '#LPMCBot'          # The default channel for the bot
 readbuffer = ''                 # Used to store incoming messages from the server
 
 s = socket.socket()             # Create the socket

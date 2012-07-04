@@ -46,7 +46,7 @@ def parsemsg(privmsg):
         if cmd[0] == '!rps':
             try:
                 user_rps = int(cmd[1])
-                if user_rps < 0 or user_rps > 3:
+                if user_rps < 0 or user_rps > 2:
                     raise Exception("Invalid")
                 else:
                     rps_names = ['rock', 'paper', 'scissors']
@@ -63,7 +63,7 @@ def parsemsg(privmsg):
                             ret += 'Player loses.\n'
             except:
                 ret = 'PRIVMSG ' + info[2] + \
-                ' :Command help: 0 = Rock, 1 = Paper, 3 = Scissors. ' + \
+                ' :Command help: 0 = Rock, 1 = Paper, 2 = Scissors. ' + \
                 'Example: !rps 1\n'
 
 
